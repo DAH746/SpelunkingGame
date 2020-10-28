@@ -1,22 +1,53 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public float maxVelocity = 15f;
     public float jumpThrust = 10f;
     public float speedMultiplier = 4f;
-    private Rigidbody2D rigidBody;
+
+    public int health = 0;
+    public int maxHealth = 10;
+    public GameObject healthIndicator = null;
 
     public bool isGrounded = false;
     public bool isGrabbingWall = false;
     public bool facingRight = true;
 
+
+    private float sqrMaxVelocity;
+    private Rigidbody2D rigidBody;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        health = maxHealth;
+        damage(0);
+    }
+
+    void Awake() {
+        sqrMaxVelocity = maxVelocity * maxVelocity;
+    }
+
+    void Update()
+    {
+        RaycastHit2D below = Physics2D.Raycast(transform.position, -Vector2.up, GetComponent<BoxCollider2D>().bounds.extents.y + 0.1f);
+        if (below.collider != null)
+        {
+            //Object is below us - we're grounded
+            isGrounded = true;
+            isGrabbingWall = false;
+        }
+        else
+        {
+            isGrounded = false;
+            //Not grounded check wall jump
+            RaycastHit2D facing = Physics2D.Raycast(transform.position, (facingRight ? 1 : -1) * Vector2.right, GetComponent<BoxCollider2D>().bounds.extents.x + 0.1f);
+            if (facing.collider != null && facing.collider.gameObject.tag == "Ground") {
+                isGrabbingWall = true;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -44,41 +75,8 @@ public class PlayerController : MonoBehaviour
             reverseDirection();
         }
 
-    }
-
-    void OnCollisionEnter2D(Collision2D c)
-    {
-        if (c.gameObject.tag == "Ground") {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
-            
-            if (hit.collider!=null)
-            {
-                if (hit.collider.gameObject == c.gameObject)
-                {
-                    isGrounded = true;
-                    isGrabbingWall = false;
-                }
-                else
-                {
-                    isGrabbingWall = true;
-                    isGrounded = false;
-                }
-            }
-            else
-            {
-                isGrabbingWall = true;
-                isGrounded = false;
-            }
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0f);
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D c)
-    {
-        if (c.gameObject.tag == "Ground")
-        {
-            isGrounded = false;
-            isGrabbingWall = false;
+        if (rigidBody.velocity.sqrMagnitude > sqrMaxVelocity) { 
+            rigidBody.velocity = rigidBody.velocity.normalized * maxVelocity;
         }
     }
 
@@ -89,5 +87,16 @@ public class PlayerController : MonoBehaviour
         Vector3 s = transform.localScale;
         s.x *= -1;
         transform.localScale = s;
+    }
+
+    public void damage(int d)
+    {
+        health -= d;
+        healthIndicator.GetComponent<Text>().text = "Health: " + health;
+        UnityEngine.Debug.Log("Player recieved " + d + " damage.");
+        if (health <= 0) {
+            UnityEngine.Debug.Log("Player Dead!");
+            healthIndicator.GetComponent<Text>().text = "Health: Dead!";
+        }
     }
 }
