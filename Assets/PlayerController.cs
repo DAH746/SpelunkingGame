@@ -3,30 +3,31 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //Statistics for player
     public float maxVelocity = 15f;
     public float jumpThrust = 10f;
     public float speedMultiplier = 4f;
-
     public int health = 0;
     public int maxHealth = 10;
     public GameObject healthIndicator = null;
 
+    //Player state handling
     public bool isGrounded = false;
     public bool isGrabbingWall = false;
     public bool facingRight = true;
 
-
     private float sqrMaxVelocity;
     private Rigidbody2D rigidBody;
 
-    void Start()
-    {
+    void Start() {
+        //Find rigid body and setup player health - deal no damage to setup the player UI
         rigidBody = GetComponent<Rigidbody2D>();
         health = maxHealth;
         damage(0);
     }
 
     void Awake() {
+        //Calculate sqrt velocity (quicker when compared) for max velocity
         sqrMaxVelocity = maxVelocity * maxVelocity;
     }
 
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        //Handle horizontal and vertical movement
         float horizontal = (Input.GetAxis("Horizontal") * speedMultiplier);
         if (Input.GetButton("Jump") && isGrounded)
         {
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour
             reverseDirection();
         }
 
+        //Limit players velocity
         if (rigidBody.velocity.sqrMagnitude > sqrMaxVelocity) { 
             rigidBody.velocity = rigidBody.velocity.normalized * maxVelocity;
         }
@@ -82,6 +85,7 @@ public class PlayerController : MonoBehaviour
 
     void reverseDirection()
     {
+        //Rotate the player to face opposite direction
         facingRight = !facingRight;
 
         Vector3 s = transform.localScale;
@@ -91,9 +95,12 @@ public class PlayerController : MonoBehaviour
 
     public void damage(int d)
     {
+        //Handle player recieving damage - update heath UI according to damage recieved.
         health -= d;
         healthIndicator.GetComponent<Text>().text = "Health: " + health;
-        UnityEngine.Debug.Log("Player recieved " + d + " damage.");
+        if (d>0) {
+            UnityEngine.Debug.Log("Player recieved " + d + " damage.");
+        }
         if (health <= 0) {
             UnityEngine.Debug.Log("Player Dead!");
             healthIndicator.GetComponent<Text>().text = "Health: Dead!";

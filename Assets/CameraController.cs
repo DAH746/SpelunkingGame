@@ -6,15 +6,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject follow = null;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        //Follow specified game object - would generally be the player assigned 
+        //as the follow object in the editor, but could change depending on death handling
         this.transform.position = new Vector3(follow.transform.position.x, follow.transform.position.y, -5);
     }
 }
