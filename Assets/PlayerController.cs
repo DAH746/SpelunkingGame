@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float jumpThrust = 10f;
     public float speedMultiplier = 4f;
     public int health = 0;
-    public int maxHealth = 10;
+    public int maxHealth = 20;
     public GameObject healthIndicator = null;
 
     //Player state handling

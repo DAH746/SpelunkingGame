@@ -40,11 +40,14 @@ TagManager:
   - 
   - Very forward
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 1456326017
+    locked: 0
+  - name: Texture
+    uniqueID: 1454782935
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Player
     uniqueID: 1746528451
