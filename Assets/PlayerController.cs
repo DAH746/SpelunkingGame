@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Security.Cryptography;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -31,10 +32,13 @@ public class PlayerController : MonoBehaviour
         sqrMaxVelocity = maxVelocity * maxVelocity;
     }
 
+
     void Update()
     {
-        RaycastHit2D below = Physics2D.Raycast(transform.position, -Vector2.up, GetComponent<BoxCollider2D>().bounds.extents.y + 0.1f);
-        if (below.collider != null)
+        RaycastHit2D[] hits = new RaycastHit2D[1];
+        int amountOfHits = GetComponent<BoxCollider2D>().Raycast(-Vector2.up, hits, GetComponent<BoxCollider2D>().bounds.extents.x + 0.1f);
+        Debug.DrawLine(transform.position, transform.position + (Vector3)(-Vector2.up * (GetComponent<BoxCollider2D>().bounds.extents.x + 0.1f)));
+        if (amountOfHits > 0)
         {
             //Object is below us - we're grounded
             isGrounded = true;
