@@ -1,9 +1,14 @@
 ﻿using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
+    //Player Inventory
+        //Purpose of inven is to allow for potential future feature such as: show the gems collected for the level so far in an opaque fashion as a HUD at the top of the screen
+    public List<string> inventory; 
+
     //Statistics for player
     public float maxVelocity = 15f;
     public float jumpThrust = 10f;
@@ -21,10 +26,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidBody;
 
     void Start() {
+        //initialise player inventory
+        inventory = new List<string>();
+
         //Find rigid body and setup player health - deal no damage to setup the player UI
         rigidBody = GetComponent<Rigidbody2D>();
         health = maxHealth;
         damage(0);
+
     }
 
     void Awake() {
@@ -110,4 +119,54 @@ public class PlayerController : MonoBehaviour
             healthIndicator.GetComponent<Text>().text = "Health: Dead!";
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+        //Potential issue as traps are also 2d colliders, may have to do "else {do nothing}" so nothing happens here but the enemy script manages it?
+        //Potential issue might be resolved: Gem pickups are labelled as "OnTrigger", whereas traps are "OnCollision"
+    {
+        if (collision.CompareTag("Collectable")){
+
+            string itemType = collision.gameObject.GetComponent<CollectableScript>().itemType;
+            int itemValue=0;
+
+            if(itemType == "redGem")
+            {
+                itemValue = 1000;
+            }else if(itemType == "greenGem")
+            {
+                itemValue = 3000;
+            }
+            else if(itemType == "pinkGem")
+            {
+                itemValue = 5000;
+            }
+            else if(itemType == "blueGem")
+            {
+                itemValue = 7500;
+            }
+            else if(itemType == "bigPinkGem")
+            {
+                itemValue = 10000;
+            }
+            else
+            {
+                //Should not get here
+                itemValue = -1;
+            }
+
+            CashScript.cashValue += itemValue;
+
+            inventory.Add(itemType);
+            print(itemValue);
+
+            print("Player collected a " + itemType);
+            Destroy(collision.gameObject);
+        }
+        
+    }
+
+
+
+
+
 }
