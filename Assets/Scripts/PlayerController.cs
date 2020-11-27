@@ -157,7 +157,6 @@ public class PlayerController : MonoBehaviour
             CashScript.cashValue += itemValue;
 
             inventory.Add(itemType);
-            print(itemValue);
 
             print("Player collected a " + itemType);
             Destroy(collision.gameObject);
