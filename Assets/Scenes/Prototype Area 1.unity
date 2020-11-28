@@ -2719,6 +2719,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5266021990861290677, guid: aaaf62085704f4e439ce326789536c4e, type: 3}
   m_PrefabInstance: {fileID: 1777026215}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &169496545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 169496546}
+  m_Layer: 0
+  m_Name: CastPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &169496546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169496545}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.081, y: 0.043, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1497167376}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &193279368
 GameObject:
   m_ObjectHideFlags: 0
@@ -6022,7 +6052,7 @@ GameObject:
   - component: {fileID: 1017226796}
   - component: {fileID: 1017226795}
   - component: {fileID: 1017226799}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6135,7 +6165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017226794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.37, y: 1.33, z: 0}
+  m_LocalPosition: {x: 3.39, y: 1.33, z: 0}
   m_LocalScale: {x: 1.8060925, y: 1.8279555, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7874,7 +7904,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.105211, y: -2.5801244, z: 1.466517}
   m_LocalScale: {x: 1.2576892, y: 1.3149545, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 169496546}
   m_Father: {fileID: 1887201014}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7891,8 +7922,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1017226798}
+  castPoint: {fileID: 169496546}
   agroRange: 2.5
   moveSpeed: 2
+  isTheSpriteFacingLeft: 1
+  DoYouWantRadiusBasedChasing: 0
 --- !u!50 &1497167378
 Rigidbody2D:
   serializedVersion: 4
