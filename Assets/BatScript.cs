@@ -25,6 +25,8 @@ public class BatScript : MonoBehaviour
     [SerializeField]
     bool isTheSpriteFacingLeft;
 
+    bool hasBatBeenTriggered = false;
+
     //Animation states
 
     const string BAT_IDLE = "Bat_idle_Animation";
@@ -46,15 +48,18 @@ public class BatScript : MonoBehaviour
         if (distToPlayer < agroRange)
         {
             animator.SetBool("activateFlight", true);
+            hasBatBeenTriggered = true;
             //ChangeAnimationState(BAT_FLY);
             //code to chase player
+            
+        }
+        if (hasBatBeenTriggered)
+        {
             ChasePlayer();
         }
-        else
-        {
-            //stop chasing player
-            StopChasingPlayer();
-        }
+
+        //todo bat will continue to chase you till you kill it, or character dies
+        
     }
 
     void ChasePlayer()
