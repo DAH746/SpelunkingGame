@@ -61,7 +61,15 @@ public class BatScript : MonoBehaviour
     {
         if (transform.position.x < player.position.x)//if enemy is to left of player, enemy will move right
         {
-            rb2d.velocity = new Vector2(moveSpeed, 0); //Y is 0 as not moving vertically atm
+            if(transform.position.y < player.position.y)
+            {
+                rb2d.velocity = new Vector2(moveSpeed, moveSpeed);
+            }
+            else
+            {
+                rb2d.velocity = new Vector2(moveSpeed, -moveSpeed);//0); //Y is 0 as not moving vertically atm
+            }
+            
 
             transform.localScale = new Vector2(-1, 1); //enemy direction facing
 
@@ -69,7 +77,15 @@ public class BatScript : MonoBehaviour
         }
         else if (transform.position.x >= player.position.x)//if enemy is to right of player, enemy will move left
         {
-            rb2d.velocity = new Vector2(-moveSpeed, 0);
+            if (transform.position.y < player.position.y)
+            {
+                rb2d.velocity = new Vector2(-moveSpeed, moveSpeed);
+            }
+            else
+            {
+                rb2d.velocity = new Vector2(-moveSpeed, -moveSpeed);
+            }
+                //rb2d.velocity = new Vector2(-moveSpeed, -moveSpeed);//0);
 
             transform.localScale = new Vector2(1, 1); //enemy direction facing
 
