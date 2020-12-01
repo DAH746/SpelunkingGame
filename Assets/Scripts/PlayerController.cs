@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+
 public class PlayerController : MonoBehaviour
 {
     //Player Inventory
@@ -25,6 +26,13 @@ public class PlayerController : MonoBehaviour
     private float sqrMaxVelocity;
     private Rigidbody2D rigidBody;
 
+    //animation
+
+    Animator animator;
+    const string CHARACTER_IDLE = "Main_Character_Idle_Animation";
+    const string CHARACTER_RUN = "Main_Character_Running_Animation";
+    //bool jump = false;
+
     void Start() {
         //initialise player inventory
         inventory = new List<string>();
@@ -33,6 +41,8 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         health = maxHealth;
         damage(0);
+
+        animator = GetComponent<Animator>();
 
     }
 
@@ -44,6 +54,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("jump");
+/*            jump = true;
+            animator.SetBool("isJumping", false);*/
+
+        }
+
         RaycastHit2D[] hits = new RaycastHit2D[1];
         int amountOfHits = GetComponent<BoxCollider2D>().Raycast(-Vector2.up, hits, GetComponent<BoxCollider2D>().bounds.extents.x + 0.1f);
         Debug.DrawLine(transform.position, transform.position + (Vector3)(-Vector2.up * (GetComponent<BoxCollider2D>().bounds.extents.x + 0.1f)));
@@ -63,6 +90,11 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+/*
+    public void OnLanding()
+    {
+        animator.SetBool("isJumping", false);
+    }*/
 
     void FixedUpdate()
     {
