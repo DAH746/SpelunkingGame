@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Object
   - Collectable
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -19,9 +20,9 @@ TagManager:
   - Background
   - Player
   - Action
-  - 
-  - 
-  - 
+  - Enemy
+  - Trap Layer
+  - EnemyLayer2
   - 
   - 
   - 

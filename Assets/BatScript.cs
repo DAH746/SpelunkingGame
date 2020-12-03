@@ -38,6 +38,8 @@ public class BatScript : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+        Physics2D.IgnoreLayerCollision(11, 0, true); //ignore collision between "Enemy layer - layer 11" and the "default layer - layer 0 "
+        Physics2D.IgnoreLayerCollision(11, 12, false);
     }
 
     void Update()
@@ -103,4 +105,12 @@ public class BatScript : MonoBehaviour
     {
         rb2d.velocity = Vector2.zero; //same as "new Vector2(0,0);"
     }
+
+/*    void OnCollisionStay(Collision collide)
+    {
+        // Output the name of the GameObject you collide with
+        Debug.Log("I hit the GameObject : " + collide.gameObject.name);
+    }*/
+
+
 }
