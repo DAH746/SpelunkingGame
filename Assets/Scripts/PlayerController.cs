@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private float sqrMaxVelocity;
     private Rigidbody2D rigidBody;
 
+    public GameObject respawnPoint = null;
+
     //animation
 
     Animator animator;
@@ -43,7 +45,6 @@ public class PlayerController : MonoBehaviour
         damage(0);
 
         animator = GetComponent<Animator>();
-
     }
 
     void Awake() {
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if(Input.GetAxis("Horizontal")!=0)
         {
             animator.SetBool("isRunning", true);
         }
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isRunning", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButton("Jump"))
         {
             animator.SetTrigger("jump");
 /*            jump = true;
@@ -148,7 +149,11 @@ public class PlayerController : MonoBehaviour
         }
         if (health <= 0) {
             UnityEngine.Debug.Log("Player Dead!");
-            healthIndicator.GetComponent<Text>().text = "Health: Dead!";
+            health = maxHealth;
+            healthIndicator.GetComponent<Text>().text = "Health: " + health;
+            if (respawnPoint!=null) {
+                transform.position = respawnPoint.transform.position;
+            }
         }
     }
 
