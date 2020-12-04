@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     //Statistics for player
     public float maxVelocity = 15f;
     public float jumpThrust = 10f;
+    //public float jumpIfHitEnemy = 10f;
     public float speedMultiplier = 4f;
     public int health = 0;
     public int maxHealth = 20;

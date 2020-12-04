@@ -11,6 +11,9 @@ public class EnemyAgroEasy : MonoBehaviour
     Transform castPoint;
 
     [SerializeField]
+    int health = 1;
+
+    [SerializeField]
     float agroRange;
 
     [SerializeField]
@@ -148,6 +151,23 @@ public class EnemyAgroEasy : MonoBehaviour
         rb2d.velocity = Vector2.zero; //same as "new Vector2(0,0);"
     }
 
+    void OnTriggerEnter2D(Collider2D otherObject)
+    {
+        if (otherObject.gameObject.tag == "Player")
+        {
+            if (otherObject.GetComponent<Rigidbody2D>().velocity.y <= 0f)
+            {
+                otherObject.GetComponent<Rigidbody2D>().velocity = new Vector2(rb2d.velocity.x, (otherObject.GetComponent<PlayerController>().jumpThrust) * 0.4f);
+                //Destroy(this.gameObject);
+                health = health - 1;
 
+                if (health <= 0)
+                {
+                    Destroy(this.gameObject);
+                }
+
+            }
+        }
+    }
 
 }

@@ -11,14 +11,18 @@ public class BatScript : MonoBehaviour
     [SerializeField]
     Transform player;
 
-/*    [SerializeField] //not needed right now as is radius base chase
-    Transform castPoint;*/
+    /*    [SerializeField] //not needed right now as is radius base chase
+        Transform castPoint;*/
+
+    [SerializeField]
+    int health = 1;
 
     [SerializeField]
     float agroRange;
 
     [SerializeField]
     float moveSpeed;
+
 
     Rigidbody2D rb2d;
 
@@ -104,6 +108,25 @@ public class BatScript : MonoBehaviour
     void StopChasingPlayer()
     {
         rb2d.velocity = Vector2.zero; //same as "new Vector2(0,0);"
+    }
+
+    void OnTriggerEnter2D(Collider2D otherObject)
+    {
+        if(otherObject.gameObject.tag == "Player")
+        {
+            if(otherObject.GetComponent<Rigidbody2D>().velocity.y <= 0f)
+            {
+                otherObject.GetComponent<Rigidbody2D>().velocity = new Vector2(rb2d.velocity.x, (otherObject.GetComponent<PlayerController>().jumpThrust)*0.4f);
+                //Destroy(this.gameObject);
+                health = health-1;
+
+                if(health <= 0)
+                {
+                    Destroy(this.gameObject);
+                }
+
+            }
+        }
     }
 
 /*    void OnCollisionStay(Collision collide)
