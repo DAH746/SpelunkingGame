@@ -44,6 +44,7 @@ public class BatScript : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         Physics2D.IgnoreLayerCollision(11, 0, true); //ignore collision between "Enemy layer - layer 11" and the "default layer - layer 0 "
         Physics2D.IgnoreLayerCollision(11, 12, false);
+        Physics2D.IgnoreLayerCollision(11, 31, true);
     }
 
     void Update()
