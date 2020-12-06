@@ -30,10 +30,14 @@ public class EnemyAgroEasy : MonoBehaviour
     bool isAgro = false;
     SpriteRenderer spriteRenderer;
 
+    public AudioClip deathSound = null;
+    private AudioSource audioSource = null;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = Object.FindObjectOfType<AudioSource>();
     }
 
     void Update()
@@ -179,6 +183,10 @@ public class EnemyAgroEasy : MonoBehaviour
 
                 if (health <= 0)
                 {
+                    if (audioSource != null && deathSound != null)
+                    {
+                        audioSource.PlayOneShot(deathSound, 1f);
+                    }
                     Destroy(this.gameObject);
                 }
 

@@ -127,6 +127,7 @@ MonoBehaviour:
   moveSpeed: 2
   isTheSpriteFacingLeft: 1
   DoYouWantRadiusBasedChasing: 0
+  deathSound: {fileID: 8300000, guid: 26e19616f6ba9f6469e9d3d6c38b23fe, type: 3}
 --- !u!114 &6629871601126355734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +143,7 @@ MonoBehaviour:
   collisionDamage: 1
   enemyHealth: 1
   deathIfHitTrap: 1
+  deathSound: {fileID: 8300000, guid: 26e19616f6ba9f6469e9d3d6c38b23fe, type: 3}
 --- !u!50 &6629871601126355728
 Rigidbody2D:
   serializedVersion: 4

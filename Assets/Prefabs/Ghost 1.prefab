@@ -121,6 +121,7 @@ MonoBehaviour:
   collisionDamage: 1
   enemyHealth: 1
   deathIfHitTrap: 0
+  deathSound: {fileID: 8300000, guid: 26e19616f6ba9f6469e9d3d6c38b23fe, type: 3}
 --- !u!114 &4288216315197124783
 MonoBehaviour:
   m_ObjectHideFlags: 0

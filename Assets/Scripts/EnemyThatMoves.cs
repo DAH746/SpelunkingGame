@@ -13,6 +13,14 @@ public class EnemyThatMoves : MonoBehaviour
     [SerializeField]
     bool deathIfHitTrap;
 
+    public AudioClip deathSound = null;
+    private AudioSource audioSource = null;
+
+    void Start()
+    {
+        audioSource = Object.FindObjectOfType<AudioSource>();
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         
@@ -21,6 +29,10 @@ public class EnemyThatMoves : MonoBehaviour
             collision.gameObject.GetComponent<PlayerController>().damage(collisionDamage);
         }else if (collision.gameObject.tag == "Trap" && deathIfHitTrap == true)
         {
+            if (audioSource!=null && deathSound!=null)
+            {
+                audioSource.PlayOneShot(deathSound, 1f);
+            }
             Destroy(this.gameObject);
         }
     }
