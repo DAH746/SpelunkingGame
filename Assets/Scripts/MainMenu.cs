@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -9,14 +10,19 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsScreen = null;
 
     public AudioSource backgroundMusic = null;
+    public Slider volumeSlider = null;
 
     float gameVolume = 0.3f;
 
     public static int difficulty = 1; // 0 = Easy, 1 = Normal, 2 = Hard..
 
+    void Start(){
+        gameVolume = PlayerPrefs.GetFloat("volume");
+        volumeSlider.value = gameVolume;
+    }
+
     public void startGame()
     {
-        PlayerPrefs.SetFloat("volume", gameVolume);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -41,6 +47,7 @@ public class MainMenu : MonoBehaviour
     {
         gameVolume = volume;
         backgroundMusic.volume = volume;
+        PlayerPrefs.SetFloat("volume", gameVolume);
     }
 
     public static void updateDifficulty(int value){
