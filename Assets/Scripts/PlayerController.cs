@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public float speedMultiplier = 4f;
     public int health = 0;
     public int maxHealth = 20;
-    public GameObject healthIndicator = null;
+    //public GameObject healthIndicator = null;
 
     //Player state handling
     public bool isGrounded = false;
@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidBody;
 
     public GameObject respawnPoint = null;
+
+    public HealthBar healthBar;
 
     //animation
 
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
         //Find rigid body and setup player health - deal no damage to setup the player UI
         rigidBody = GetComponent<Rigidbody2D>();
         health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         damage(0);
 
         animator = GetComponent<Animator>();
@@ -144,14 +147,16 @@ public class PlayerController : MonoBehaviour
     {
         //Handle player recieving damage - update heath UI according to damage recieved.
         health -= d;
-        healthIndicator.GetComponent<Text>().text = "Health: " + health;
+        healthBar.SetHealth(health);
+        //healthIndicator.GetComponent<Text>().text = "Health: " + health;
         if (d>0) {
             UnityEngine.Debug.Log("Player recieved " + d + " damage.");
         }
         if (health <= 0) {
             UnityEngine.Debug.Log("Player Dead!");
             health = maxHealth;
-            healthIndicator.GetComponent<Text>().text = "Health: " + health;
+            healthBar.SetMaxHealth(maxHealth);
+            //healthIndicator.GetComponent<Text>().text = "Health: " + health;
             if (respawnPoint!=null) {
                 transform.position = respawnPoint.transform.position;
             }

@@ -16,6 +16,6 @@ public class CashScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cash.text = "Cash: $ " + cashValue;
+        cash.text = cashValue.ToString();
     }
 }
