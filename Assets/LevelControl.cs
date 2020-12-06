@@ -28,6 +28,6 @@ public class LevelControl : MonoBehaviour
 
     void Update() {
         timer += Time.deltaTime;
-        timeIndicator.GetComponent<Text>().text = "Time: " + timer.ToString("F2") + " seconds";
+        timeIndicator.GetComponent<Text>().text = timer.ToString("F0") + "s";
     }
 }
