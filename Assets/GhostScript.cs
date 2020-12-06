@@ -21,6 +21,7 @@ public class GhostScript : MonoBehaviour
     float moveSpeed;
 
     Rigidbody2D rb2d1;
+    SpriteRenderer spriteRenderer;
 
     [SerializeField]
     bool isTheSpriteFacingLeft;
@@ -35,8 +36,10 @@ public class GhostScript : MonoBehaviour
     {
         //animator1 = GetComponent<Animator>();
         rb2d1 = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         Physics2D.IgnoreLayerCollision(13, 0, true); //ignore collision between "Enemy layer - layer 11" and the "default layer - layer 0 "
         Physics2D.IgnoreLayerCollision(13, 12, true);
+        Physics2D.IgnoreLayerCollision(13, 31, true);
         //Physics2D.IgnoreLayerCollision(11, 12, true);
     }
 
@@ -64,6 +67,8 @@ public class GhostScript : MonoBehaviour
 
     void ChasePlayer()
     {
+
+
         if (transform.position.x < player.position.x)//if enemy is to left of player, enemy will move right
         {
             if (transform.position.y < player.position.y)
@@ -75,10 +80,16 @@ public class GhostScript : MonoBehaviour
                 rb2d1.velocity = new Vector2(moveSpeed, -moveSpeed);//0); //Y is 0 as not moving vertically atm
             }
 
+            if (spriteRenderer.flipX == true) //if the sprite is flipped 
+            {
+                transform.localScale = new Vector2(1, 1); //enemy direction facing
+            }
+            else
+            {
+                transform.localScale = new Vector2(-1, 1);
+            }
 
-            transform.localScale = new Vector2(-1, 1); //enemy direction facing
-
-            isTheSpriteFacingLeft = false;
+            isTheSpriteFacingLeft = false; //for raycast
         }
         else if (transform.position.x >= player.position.x)//if enemy is to right of player, enemy will move left
         {
@@ -90,16 +101,22 @@ public class GhostScript : MonoBehaviour
             {
                 rb2d1.velocity = new Vector2(-moveSpeed, -moveSpeed);
             }
-            //rb2d.velocity = new Vector2(-moveSpeed, -moveSpeed);//0);
 
-            transform.localScale = new Vector2(1, 1); //enemy direction facing
+            if (spriteRenderer.flipX == true) //if the sprite is flipped 
+            {
+                transform.localScale = new Vector2(-1, 1); //enemy direction facing
+            }
+            else
+            {
+                transform.localScale = new Vector2(1, 1);
+            }
 
-            isTheSpriteFacingLeft = true;
+            isTheSpriteFacingLeft = true; //for raycast
         }
 
     }
 
-    void StopChasingPlayer()
+        void StopChasingPlayer()
     {
         rb2d1.velocity = Vector2.zero; //same as "new Vector2(0,0);"
     }

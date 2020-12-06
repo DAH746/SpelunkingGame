@@ -28,10 +28,12 @@ public class EnemyAgroEasy : MonoBehaviour
     bool DoYouWantRadiusBasedChasing;
 
     bool isAgro = false;
+    SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -130,17 +132,31 @@ public class EnemyAgroEasy : MonoBehaviour
         {
             rb2d.velocity = new Vector2(moveSpeed, 0); //Y is 0 as not moving vertically atm
 
-            transform.localScale = new Vector2(-1, 1); //enemy direction facing
+            if (spriteRenderer.flipX == true) //if the sprite is flipped 
+            {
+                transform.localScale = new Vector2(1, 1); //enemy direction facing
+            }
+            else
+            {
+                transform.localScale = new Vector2(-1, 1);
+            }
 
-            isTheSpriteFacingLeft = false;
+            isTheSpriteFacingLeft = false; //for raycast position
         }
         else if (transform.position.x >= player.position.x)//if enemy is to right of player, enemy will move left
         {
             rb2d.velocity = new Vector2(-moveSpeed, 0);
 
-            transform.localScale = new Vector2(1, 1); //enemy direction facing
+            if (spriteRenderer.flipX == true) //if the sprite is flipped 
+            {
+                transform.localScale = new Vector2(-1, 1); //enemy direction facing
+            }
+            else
+            {
+                transform.localScale = new Vector2(1, 1);
+            }
 
-            isTheSpriteFacingLeft = true;
+            isTheSpriteFacingLeft = true; //for raycast
         }
 
     }
@@ -148,7 +164,7 @@ public class EnemyAgroEasy : MonoBehaviour
     void StopChasingPlayer()
     {
         isAgro = false;
-        rb2d.velocity = Vector2.zero; //same as "new Vector2(0,0);"
+        rb2d.velocity = Vector2.zero; 
     }
 
     void OnTriggerEnter2D(Collider2D otherObject)
@@ -158,7 +174,7 @@ public class EnemyAgroEasy : MonoBehaviour
             if (otherObject.GetComponent<Rigidbody2D>().velocity.y <= 0f)
             {
                 otherObject.GetComponent<Rigidbody2D>().velocity = new Vector2(rb2d.velocity.x, (otherObject.GetComponent<PlayerController>().jumpThrust) * 0.4f);
-                //Destroy(this.gameObject);
+                
                 health = health - 1;
 
                 if (health <= 0)
