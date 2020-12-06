@@ -22,9 +22,9 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource = null;
 
     //Player state handling
-    public bool isGrounded = false;
-    public bool isGrabbingWall = false;
-    public bool facingRight = true;
+    private bool isGrounded = false;
+    private bool isGrabbingWall = false;
+    private bool facingRight = true;
 
     private float sqrMaxVelocity;
     private Rigidbody2D rigidBody;
@@ -168,8 +168,6 @@ public class PlayerController : MonoBehaviour
             UnityEngine.Debug.Log("Player recieved " + d + " damage.");
             if (hitSound!=null && audioSource!=null)
             {
-
-                UnityEngine.Debug.Log("HIT SOUND");
                 audioSource.PlayOneShot(hitSound, 1f);
             }
         }
