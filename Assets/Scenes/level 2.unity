@@ -14452,6 +14452,7 @@ MonoBehaviour:
   collisionDamage: 1
   enemyHealth: 1
   deathIfHitTrap: 0
+  deathSound: {fileID: 8300000, guid: 26e19616f6ba9f6469e9d3d6c38b23fe, type: 3}
 --- !u!95 &2049416888
 Animator:
   serializedVersion: 3

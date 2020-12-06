@@ -14,7 +14,7 @@ public class EnemyThatMoves : MonoBehaviour
     bool deathIfHitTrap;
 
     public AudioClip deathSound = null;
-    private AudioSource audioSource = null;
+    public AudioSource audioSource = null;
 
     void Start()
     {
