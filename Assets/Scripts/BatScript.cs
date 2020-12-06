@@ -43,7 +43,8 @@ public class BatScript : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         Physics2D.IgnoreLayerCollision(11, 0, true); //ignore collision between "Enemy layer - layer 11" and the "default layer - layer 0 "
-        Physics2D.IgnoreLayerCollision(11, 12, false);
+        Physics2D.IgnoreLayerCollision(11, 12, false); //do not ignore trap layer
+        Physics2D.IgnoreLayerCollision(11, 31, true);// ignore invisible flat ground colliders
     }
 
     void Update()
