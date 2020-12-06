@@ -7254,6 +7254,7 @@ MonoBehaviour:
   speedMultiplier: 5
   health: 0
   maxHealth: 20
+  hitSound: {fileID: 8300000, guid: 87e2452fe2c754248926c9a9ab93a467, type: 3}
   isGrounded: 0
   isGrabbingWall: 0
   facingRight: 1
@@ -9216,7 +9217,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

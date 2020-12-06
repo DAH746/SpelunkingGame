@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
 
     public AudioSource backgroundMusic = null;
 
-    float gameVolume = 0.5f;
+    float gameVolume = 0.3f;
 
     public static int difficulty = 1; // 0 = Easy, 1 = Normal, 2 = Hard..
 

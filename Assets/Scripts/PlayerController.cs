@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public float speedMultiplier = 4f;
     public int health = 0;
     public int maxHealth = 20;
+    public AudioClip hitSound = null;
+
+    private AudioSource audioSource = null;
 
     //Player state handling
     public bool isGrounded = false;
@@ -60,6 +63,8 @@ public class PlayerController : MonoBehaviour
         damage(0);
 
         animator = GetComponent<Animator>();
+
+        audioSource = Object.FindObjectOfType<AudioSource>();
     }
 
     void Awake() {
@@ -161,6 +166,12 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(health);
         if (d>0) {
             UnityEngine.Debug.Log("Player recieved " + d + " damage.");
+            if (hitSound!=null && audioSource!=null)
+            {
+
+                UnityEngine.Debug.Log("HIT SOUND");
+                audioSource.PlayOneShot(hitSound, 1f);
+            }
         }
         if (health <= 0) {
             UnityEngine.Debug.Log("Player Dead!");
