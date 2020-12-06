@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public HealthBar healthBar;
 
+
     //animation
 
     Animator animator;
@@ -40,6 +41,17 @@ public class PlayerController : MonoBehaviour
     void Start() {
         //initialise player inventory
         inventory = new List<string>();
+
+        if(MainMenu.difficulty == 0){
+            // Easy 
+            maxHealth = 100;
+        }else if(MainMenu.difficulty == 1){
+            // Easy 
+            maxHealth = 20;
+        }else if(MainMenu.difficulty == 2){
+            // Easy 
+            maxHealth = 1;
+        }
 
         //Find rigid body and setup player health - deal no damage to setup the player UI
         rigidBody = GetComponent<Rigidbody2D>();

@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
 
     float gameVolume = 0.5f;
 
+    public static int difficulty = 1; // 0 = Easy, 1 = Normal, 2 = Hard..
+
     public void startGame()
     {
         PlayerPrefs.SetFloat("volume", gameVolume);
@@ -39,5 +41,9 @@ public class MainMenu : MonoBehaviour
     {
         gameVolume = volume;
         backgroundMusic.volume = volume;
+    }
+
+    public static void updateDifficulty(int value){
+        difficulty = value;
     }
 }
