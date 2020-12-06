@@ -14,6 +14,7 @@ public class LevelControl : MonoBehaviour
 
     public float timer = 0;
     public GameObject timeIndicator = null;
+    private bool active = true;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,8 +27,18 @@ public class LevelControl : MonoBehaviour
         }
     }
 
-    void Update() {
-        timer += Time.deltaTime;
-        timeIndicator.GetComponent<Text>().text = timer.ToString("F0") + "s";
+    public void Update() {
+        if(active){
+            timer += Time.deltaTime;
+            timeIndicator.GetComponent<Text>().text = timer.ToString("F0") + "s";
+        }
+    }
+
+    public void Pause(){
+        active = false;
+    }
+
+    public void Resume(){
+        active = true;
     }
 }
