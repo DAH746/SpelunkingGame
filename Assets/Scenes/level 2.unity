@@ -7081,7 +7081,6 @@ MonoBehaviour:
   speedMultiplier: 5
   health: 0
   maxHealth: 20
-  healthIndicator: {fileID: 0}
   isGrounded: 0
   isGrabbingWall: 0
   facingRight: 1
@@ -8923,6 +8922,10 @@ PrefabInstance:
     - target: {fileID: 7276873701049610487, guid: 9cdfe39d73ea99246ae97326e4488be2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276873701049610490, guid: 9cdfe39d73ea99246ae97326e4488be2, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cdfe39d73ea99246ae97326e4488be2, type: 3}
@@ -12901,6 +12904,10 @@ PrefabInstance:
     - target: {fileID: 7276873701049610487, guid: 9cdfe39d73ea99246ae97326e4488be2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276873701049610490, guid: 9cdfe39d73ea99246ae97326e4488be2, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cdfe39d73ea99246ae97326e4488be2, type: 3}
