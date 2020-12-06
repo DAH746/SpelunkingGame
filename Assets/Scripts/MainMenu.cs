@@ -17,7 +17,10 @@ public class MainMenu : MonoBehaviour
     public static int difficulty = 1; // 0 = Easy, 1 = Normal, 2 = Hard..
 
     void Start(){
-        gameVolume = PlayerPrefs.GetFloat("volume");
+        if (PlayerPrefs.HasKey("volume"))
+        {
+            gameVolume = PlayerPrefs.GetFloat("volume");
+        }
         volumeSlider.value = gameVolume;
     }
 
