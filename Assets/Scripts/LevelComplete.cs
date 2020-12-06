@@ -17,6 +17,7 @@ public class LevelComplete : MonoBehaviour
 
     public GameObject continueBtn;
     public GameObject finishedBtn;
+    public GameObject playAgainBtn;
 
     float time = 0;
     string level;
@@ -52,10 +53,13 @@ public class LevelComplete : MonoBehaviour
             // Game Levels Completed Show Finished Button
             continueBtn.SetActive(false);
             finishedBtn.SetActive(true);
-        }else{
+            playAgainBtn.SetActive(true);
+        }
+        else{
             UnityEngine.Debug.Log(level+"--ELSE LEVEL");
             continueBtn.SetActive(true);
             finishedBtn.SetActive(false);
+            playAgainBtn.SetActive(false);
         }
     }
 
@@ -66,6 +70,11 @@ public class LevelComplete : MonoBehaviour
 
     public void toStartScreen(){
         SceneManager.LoadScene(0);   
+    }
+
+    public void toFirstLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public void quit()

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public int health = 0;
     public int maxHealth = 20;
     public AudioClip hitSound = null;
+    public AudioClip pickupSound = null;
 
     private AudioSource audioSource = null;
 
@@ -215,6 +216,7 @@ public class PlayerController : MonoBehaviour
                 itemValue = -1;
             }
 
+            audioSource.PlayOneShot(pickupSound, 1f);
             CashScript.cashValue += itemValue;
 
             inventory.Add(itemType);

@@ -7828,6 +7828,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 20
   hitSound: {fileID: 8300000, guid: 87e2452fe2c754248926c9a9ab93a467, type: 3}
+  pickupSound: {fileID: 8300000, guid: 5ab8fc664ca4d604f820e255005a664a, type: 3}
   respawnPoint: {fileID: 1589091503}
   healthBar: {fileID: 1214253098}
 --- !u!61 &1022078975

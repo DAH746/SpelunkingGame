@@ -9913,7 +9913,7 @@ PrefabInstance:
       objectReference: {fileID: 2031937171}
     - target: {fileID: 6768926844468427729, guid: 6b2fb710d34043648be6b087e38a4a11, type: 3}
       propertyPath: nextLevel
-      value: Menu
+      value: end
       objectReference: {fileID: 0}
     - target: {fileID: 6768926844468427731, guid: 6b2fb710d34043648be6b087e38a4a11, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10034,6 +10034,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 20
   hitSound: {fileID: 8300000, guid: 87e2452fe2c754248926c9a9ab93a467, type: 3}
+  pickupSound: {fileID: 8300000, guid: 5ab8fc664ca4d604f820e255005a664a, type: 3}
   respawnPoint: {fileID: 1212470806}
   healthBar: {fileID: 725279772}
 --- !u!61 &1980667528
