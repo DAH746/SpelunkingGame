@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 288410025}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: setGameVolume
         m_Mode: 0
