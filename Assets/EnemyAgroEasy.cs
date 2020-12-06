@@ -20,7 +20,6 @@ public class EnemyAgroEasy : MonoBehaviour
     float moveSpeed;
 
     Rigidbody2D rb2d;
-    SpriteRenderer spriteRenderer;
 
     [SerializeField]
     bool isTheSpriteFacingLeft;
@@ -33,7 +32,6 @@ public class EnemyAgroEasy : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -132,42 +130,6 @@ public class EnemyAgroEasy : MonoBehaviour
         {
             rb2d.velocity = new Vector2(moveSpeed, 0); //Y is 0 as not moving vertically atm
 
-            if (spriteRenderer.flipX == true) //if the sprite is flipped 
-            {
-                transform.localScale = new Vector2(1, 1); //enemy direction facing
-            }
-            else
-            {
-                transform.localScale = new Vector2(-1, 1);
-            }
-
-            isTheSpriteFacingLeft = false; //for raycast
-        }
-        else if (transform.position.x >= player.position.x)//if enemy is to right of player, enemy will move left
-        {
-            rb2d.velocity = new Vector2(-moveSpeed, 0);
-
-            if (spriteRenderer.flipX == true) //if the sprite is flipped 
-            {
-                transform.localScale = new Vector2(-1, 1); //enemy direction facing
-            }
-            else
-            {
-                transform.localScale = new Vector2(1, 1);
-            }
-
-            isTheSpriteFacingLeft = true; //for raycast
-        }
-
-    }
-
-
-/*    void ChasePlayer()
-    {
-        if (transform.position.x < player.position.x)//if enemy is to left of player, enemy will move right
-        {
-            rb2d.velocity = new Vector2(moveSpeed, 0); //Y is 0 as not moving vertically atm
-
             transform.localScale = new Vector2(-1, 1); //enemy direction facing
 
             isTheSpriteFacingLeft = false;
@@ -181,7 +143,7 @@ public class EnemyAgroEasy : MonoBehaviour
             isTheSpriteFacingLeft = true;
         }
 
-    }*/
+    }
 
     void StopChasingPlayer()
     {
