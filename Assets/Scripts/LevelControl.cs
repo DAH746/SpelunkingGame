@@ -22,6 +22,7 @@ public class LevelControl : MonoBehaviour
         {
             PlayerPrefs.SetFloat("CompletionTime", timer);
             PlayerPrefs.SetString("NextLevel", nextLevel);
+            UnityEngine.Debug.Log(nextLevel+" -- LEVEL");
             PlayerPrefs.SetInt("Cash", CashScript.cashValue);
             SceneManager.LoadScene("Level Complete");
         }
