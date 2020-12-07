@@ -1,5 +1,5 @@
 # Gem Rusher - Group K
- Spelunking game made in Unity3D for ECS5657 (Multi-platform Game Development)
+ 2D Platformer Game with The Fused Theme of Spelunky/Super Meat Boy made in Unity3D for ECS5657 (Multi-platform Game Development)
 
 # Authors
 - Ryan Maber
@@ -16,6 +16,9 @@ Sprites:
 
 PSD:
 - Funtique Game Free UI KIT - https://www.behance.net/gallery/30134915/-Funtique-game-UI-kit-free-PSD Some usage: modfiied and converted for usage in Unity by the group.
+
+Font:
+- Dimbo - https://www.dafont.com/dimbo.font (Used in areas such as the UI and HUD)
 
 Music:
 - Chiptune Rock Pack 1 - https://assetstore.unity.com/packages/audio/music/rock/chiptune-rock-pack-1-57965
