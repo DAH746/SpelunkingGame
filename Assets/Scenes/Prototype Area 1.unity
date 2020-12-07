@@ -12834,6 +12834,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1017226798}
+    - target: {fileID: 4288216315197124783, guid: 67424f3140263204ba0b5a144b617d3e, type: 3}
+      propertyPath: moveSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288216315197124783, guid: 67424f3140263204ba0b5a144b617d3e, type: 3}
+      propertyPath: isTheSpriteFacingLeft
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67424f3140263204ba0b5a144b617d3e, type: 3}
 --- !u!1001 &5026377945810529416
