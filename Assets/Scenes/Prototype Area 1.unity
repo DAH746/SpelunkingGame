@@ -11517,6 +11517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 1464571739}
+  volumeSlider: {fileID: 2037395532}
   settingsMenu: {fileID: 1944853367}
 --- !u!4 &1947080666 stripped
 Transform:

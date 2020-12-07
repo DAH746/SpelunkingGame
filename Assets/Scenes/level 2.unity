@@ -6541,6 +6541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 2009246266}
+  volumeSlider: {fileID: 656152338}
   settingsMenu: {fileID: 843332176}
 --- !u!114 &843332178
 MonoBehaviour:

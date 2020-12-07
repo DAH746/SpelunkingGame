@@ -10,4 +10,10 @@ public class BackgroundMusic : MonoBehaviour
         float vol = PlayerPrefs.GetFloat("volume");
         GetComponent<AudioSource>().volume = vol;
     }
+
+    void Update()
+    {
+        float vol = PlayerPrefs.GetFloat("volume");
+        GetComponent<AudioSource>().volume = vol;
+    }
 }
