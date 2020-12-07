@@ -15,7 +15,7 @@ Sprites:
 - 2D Free Crystal Set (Sprites) - https://assetstore.unity.com/packages/2d/textures-materials/2d-free-crystal-set-175156
 
 PSD:
-- Funtique Game Free UI KIT - https://www.behance.net/gallery/30134915/-Funtique-game-UI-kit-free-PSD Some usage: modfiied and converted for usage in Unity by the group.
+- Funtique Game Free UI KIT - https://www.behance.net/gallery/30134915/-Funtique-game-UI-kit-free-PSD Some usage: modified and converted for usage in Unity by the group.
 
 Font:
 - Dimbo - https://www.dafont.com/dimbo.font (Used in areas such as the UI and HUD)
