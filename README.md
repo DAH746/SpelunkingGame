@@ -1,4 +1,4 @@
-#Transferred from university enterprise github to personal github, therefore commits and insights are not accurate.
+# Transferred from university enterprise github to personal github, therefore commits and insights are not accurate.
 # Gem Rusher - Group K
  2D Platformer Game with The Fused Theme of Spelunky/Super Meat Boy made in Unity3D for ECS5657 (Multi-platform Game Development)
 
