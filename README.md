@@ -1,9 +1,10 @@
 ## Gem Rusher (2D Platformer and Action Video Game)
 _* Transferred from the university enterprise github account to my personal github, therefore **insights are not accurate**._
 
-Built using C#, Unity, GitHub, and free 3rd party assets on Unity store (see Third-party Free Assets section below for more information).
+Built using C#, Unity, GitHub, and free 3rd party assets on Unity store (see "Third-party Free Assets" section below for assets used).
 
 Concept:
+
 Gem Rusher at its core is a 2D platformer and action game.
 
 The goal is to stay alive, obtain gems, and complete each level in a fast fashion. Where a
