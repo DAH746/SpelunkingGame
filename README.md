@@ -1,5 +1,5 @@
 ## Gem Rusher (2D Platformer and Action Video Game)
-\** Transferred from the university enterprise github account to my personal github, therefore insights are not accurate.*
+_* Transferred from the university enterprise github account to my personal github, therefore insights are not accurate._
 
 Built using C#, Unity, GitHub, and free 3rd party assets on Unity store (see Third-party Free Assets section below for more information).
 
