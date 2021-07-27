@@ -1,5 +1,5 @@
 ## Gem Rusher (2D Platformer and Action Video Game)
-_* Transferred from the university enterprise github account to my personal github, therefore insights are not accurate._
+_* Transferred from the university enterprise github account to my personal github, therefore **insights are not accurate**._
 
 Built using C#, Unity, GitHub, and free 3rd party assets on Unity store (see Third-party Free Assets section below for more information).
 
@@ -16,7 +16,7 @@ the player, the leniency is decided. For example, on hard, the player cannot tak
 damage from any source. Whereas on easy or normal, the player can receive damage from
 any source and still be able to continue with a then smaller health pool.
 
-**Below are all the details as submitted for the course ECS5657 (Multi-platform Game Development) at Queen Mary University of London**
+**Below are all the details as submitted for the course ECS5657 (Multi-platform Game Development) at Queen Mary University of London.**
 
 ## Gem Rusher - Group K
  2D Platformer Game with The Fused Theme of Spelunky/Super Meat Boy made in Unity3D for ECS5657 (Multi-platform Game Development)
